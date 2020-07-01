@@ -1,4 +1,7 @@
 'use strict';
+
+const { INTEGER } = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
 
   const Sequelize = sequelize.Sequelize
@@ -15,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function (models) {
     // associations can be defined here
     User.hasMany(models.Product)
+    User.hasMany(models.Cart)
   };
   return User;
 };

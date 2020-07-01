@@ -1,18 +1,44 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Navbar />
+    <Banner />
+    <h3>List Product</h3>
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col>
+          <CardProduct
+            v-for="(product,idx) in getProducts"
+            :key="idx"
+            :product="product"
+            class="mr-2 mb-2 justify-content-md-center"
+          />
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import Banner from "@/components/Banner.vue";
+import CardProduct from "@/components/CardProduct.vue";
+import Navbar from "@/components/Navbar.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld,
+    Banner,
+    CardProduct,
+    Navbar
   },
+  created() {
+    this.$store.dispatch("getProducts");
+  },
+  computed: {
+    getProducts() {
+      return this.$store.state.products;
+    }
+  },
+  methods: {}
 };
 </script>

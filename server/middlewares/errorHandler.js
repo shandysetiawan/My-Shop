@@ -2,7 +2,7 @@ function errorHandler(err, req, res, next) {
 
     let errorCode, statusCode, errorMessage
 
-    // console.log(err)
+    console.log(err)
 
     switch (err.name) {
         case "SequelizeValidationError":
@@ -61,7 +61,7 @@ function errorHandler(err, req, res, next) {
             break
     }
 
-    // console.log(errorMessage)
+    console.log(errorMessage)
     res.status(statusCode).json({ error: errorCode, message: errorMessage })
 
 }

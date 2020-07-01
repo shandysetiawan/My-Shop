@@ -1,19 +1,16 @@
 const Helper = require('../helpers/helper')
 const users = [
   {
-    "id": 1,
     "email": "admin@email.com",
     "password": "admin123",
     "role": "admin"
   },
   {
-    "id": 2,
     "email": "mimin@email.com",
     "password": "admin123",
     "role": "admin"
   },
   {
-    "id": 3,
     "email": "mince@email.com",
     "password": "admin123",
     "role": "admin"
