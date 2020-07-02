@@ -31,15 +31,16 @@ export default {
     };
   },
   computed: {
-    getLogin() {
-      return this.$store.state.isLogin;
-    }
+    // getLogin() {
+    //   return this.$store.state.isLogin;
+    // },
   },
   methods: {
     logOutUser() {
       // console.log("ke logout");
       localStorage.removeItem("token");
       localStorage.removeItem("emailUser");
+      // if (this.$route.name !== "Home") this.$router.push({ name: "Home" });
       this.$router.push({ name: "Login" });
     }
   }

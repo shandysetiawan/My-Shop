@@ -86,25 +86,32 @@ class CartController {
                 console.log('>>>>>>>first', data)
                 data.forEach((cart) => {
                     console.log('>>>>>>>>>second', cart)
-                    return Product.findByPk(cart.ProductId)
+                    Product.findByPk(cart.ProductId)
+                        .then((result) => {
+                            console.log('>>>>>>>third', result)
+                            let updateStock = (Number(result.stock) - Number(cart.amount))
+                            console.log('>>>>>>>fourth', updateStock)
+                            Product.update(({ stock: updateStock }, { where: { id: result.id } }))
+                        })
                 })
-                    .then((data) => {
-                        console.log('>>>>>>>third', data)
-                        let updateStock = (Number(data.stock) - Number(cart.amount))
-                        console.log('>>>>>>>fourth', updateStock)
-                        Product.update(({ stock: updateStock }, { where: { id: data.id } }))
-                    })
+                Promise.all(data)
+                return data
+            })
+            .then((data) => {
 
-                Cart.destroy({ where: { UserId: req.userData.id } })
-                    .then((data) => {
+                return Cart.destroy({ where: { UserId: req.userData.id } })
+            })
+            .then((data) => {
 
-                        res.status(200).json({ message: "Successfully empty cart!" })
-                    })
-
+                res.status(200).json({ message: "Successfully empty cart!" })
             })
             .catch((err) => {
                 next(err)
             })
+
+
+
+
 
 
 

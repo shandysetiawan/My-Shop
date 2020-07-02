@@ -8,7 +8,7 @@ routes.get('/', cartController.fetchCart)
 
 routes.post('/', cartController.addCart)
 
-// routes.get('/checkout', cartController.checkOut)
+routes.get('/checkout', cartController.checkOut)
 
 // routes.get('/:id', cartController.searchCart)
 
