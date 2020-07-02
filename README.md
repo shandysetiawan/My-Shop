@@ -25,7 +25,6 @@
 11. GET : /carts
 12. POST : /carts
 13. DELETE : /carts/:id
-134. GET : /carts/checkout
 
 ## Global Response
 
@@ -500,28 +499,4 @@ Response(200 - Ok):
 ```json
 {
   "message": "Successfully delete cart!"
-}
-
-## GET /carts/checkout
-remove product from cart and update product stock
-
-Request headers:
-
-```json
-{
-  "access_token": "<your access token>"
-}
-```
-
-Request params 
-Not Needed
-
-Request body:
-Not Needed
-
-Response(200 - Ok):
-
-```json
-{
-  "message": "Successfully empty cart!"
 }
