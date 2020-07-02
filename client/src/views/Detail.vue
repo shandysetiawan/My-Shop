@@ -1,12 +1,13 @@
 <template>
   <div>
     <Navbar />
-    <b-alert show variant="success" dismissible v-if="getMessage">{{getMessage}}</b-alert>
+    <!-- <b-alert show variant="success" dismissible v-if="getMessage">{{getMessage}}</b-alert> -->
     <div class="mt-4">
       <b-card :img-src="getProduct.image_url" img-alt="getProduct.name" img-left class="mb-3">
         <h4>{{getProduct.name}}</h4>
         <p>Stock tersedia {{getProduct.stock}}</p>
         <p>Harga Satuan Rp {{getProduct.price}}</p>
+        <h4>Silakan masukan jumlah yang diinginkan</h4>
         <b-form-input type="number" min="1" :max="getProduct.stock" v-model="amountInput"></b-form-input>
         <b-button variant="outline-dark" class="mt-3" @click="addCart">Add to Cart</b-button>
       </b-card>
@@ -48,6 +49,7 @@ export default {
         //   this.message = "";
         // }, 5000);
       } else {
+        this.message = "";
         this.$store.dispatch("addCart", {
           product: this.$route.params.id,
           amount: this.amountInput

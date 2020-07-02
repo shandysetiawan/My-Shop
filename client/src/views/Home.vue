@@ -2,6 +2,7 @@
   <div class="home">
     <Navbar />
     <Banner />
+    <h2>Welcome to My Shop!</h2>
     <h3>List Product</h3>
     <b-container class="bv-example-row">
       <b-row>

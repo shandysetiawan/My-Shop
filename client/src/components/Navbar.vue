@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar toggleable="sm" type="light" variant="light">
+    <b-navbar toggleable="sm" type="light" variant="light" class="mb-3">
       <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
       <router-link v-bind:to="{ name: 'Home' }">
         <b-navbar-brand>My Shop</b-navbar-brand>
@@ -13,7 +13,8 @@
           <router-link v-bind:to="{ name: 'Login' }">
             <b-nav-text v-if="!this.login">Login</b-nav-text>
           </router-link>
-          <b-nav-item @click="logOutUser" v-if="this.login">Logout</b-nav-item>
+          <b-nav-text style="margin-left:300px" v-if="this.login">Welcome {{this.emailUser}}</b-nav-text>
+          <b-nav-item style="margin-left:350px" @click="logOutUser" v-if="this.login">Logout</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -25,7 +26,8 @@ export default {
   name: "Navbar",
   data() {
     return {
-      login: localStorage.token
+      login: localStorage.token,
+      emailUser: localStorage.emailUser
     };
   },
   computed: {

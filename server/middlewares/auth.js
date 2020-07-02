@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const { User, Product } = require('../models')
+const { User, Product, Cart } = require('../models')
 
 function authentication(req, res, next) {
 
@@ -31,10 +31,10 @@ function authentication(req, res, next) {
 
 function authorization(req, res, next) {
 
-    let idProduct = req.params.id
-    console.log(idProduct)
+    let idCart = req.params.id
+    // console.log(idCart)
 
-    Product.findByPk(idProduct)
+    Cart.findByPk(idCart)
         .then((data) => {
 
             if (!data) {
