@@ -2,7 +2,7 @@ const routes = require('express').Router()
 const productController = require('../controllers/productController')
 const { authentication, authorization } = require('../middlewares/auth')
 
-// routes.use(authentication)
+routes.use(authentication)
 
 routes.get('/', productController.fetchProducts)
 
